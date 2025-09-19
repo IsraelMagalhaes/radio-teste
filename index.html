@@ -39,16 +39,60 @@
 
     <div class="container">
         <h1>Minha Rádio Pessoal</h1>
-        <p>A música começará a tocar automaticamente.</p>
+        <p>A música começará a tocar automaticamente e seguirá a playlist.</p>
         
-        <audio controls autoplay>
-            <source src="musicas/musica1.mp3" type="audio/mpeg">
-            <source src="musicas/musica2.mp3" type="audio/mpeg">
-            <source src="musicas/musica3.mp3" type="audio/mpeg">
-
-            Seu navegador não suporta o player de áudio.
-        </audio>
+        <audio id="audioPlayer" controls autoplay></audio>
+        
+        <p>
+            Tocando agora: <span id="currentSongName"></span>
+        </p>
     </div>
+
+    <script>
+        // Lista de músicas. Adicione ou remova músicas aqui.
+        const playlist = [
+            "musicas/musica1.mp3",
+            "musicas/musica2.mp3",
+            "musicas/musica3.mp3"
+        ];
+
+        let currentSongIndex = 0;
+        const audioPlayer = document.getElementById("audioPlayer");
+        const currentSongName = document.getElementById("currentSongName");
+
+        // Função para carregar e tocar a próxima música
+        function playNextSong() {
+            // Verifica se a playlist não está vazia
+            if (playlist.length > 0) {
+                // Define a fonte do player para a música atual
+                audioPlayer.src = playlist[currentSongIndex];
+                
+                // Extrai o nome do arquivo para mostrar na tela
+                const songPath = playlist[currentSongIndex];
+                const songName = songPath.split('/').pop().replace('.mp3', '');
+                currentSongName.textContent = songName;
+                
+                // Toca a música
+                audioPlayer.play();
+
+                // Incrementa o índice para a próxima música
+                currentSongIndex++;
+                
+                // Se o índice chegar ao final da playlist, ele volta para o início (loop)
+                if (currentSongIndex >= playlist.length) {
+                    currentSongIndex = 0;
+                }
+            } else {
+                console.log("A playlist está vazia.");
+            }
+        }
+
+        // Quando a música atual terminar, a próxima é chamada
+        audioPlayer.addEventListener("ended", playNextSong);
+
+        // Inicia a primeira música ao carregar a página
+        playNextSong();
+    </script>
 
 </body>
 </html>

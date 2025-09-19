@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Rádio Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        audio {
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Minha Rádio Pessoal</h1>
+        <p>A música começará a tocar automaticamente.</p>
+        
+        <audio controls autoplay>
+            <source src="musicas/musica1.mp3" type="audio/mpeg">
+            <source src="musicas/musica2.mp3" type="audio/mpeg">
+            <source src="musicas/musica3.mp3" type="audio/mpeg">
+
+            Seu navegador não suporta o player de áudio.
+        </audio>
+    </div>
+
+</body>
+</html>
